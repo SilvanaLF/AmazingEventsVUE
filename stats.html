@@ -92,96 +92,77 @@
 
 
         <!--Table-->
+        <div id="app">
+            <div class="container-table d-flex justify-content-center pt-5">
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-bordered">
+                            <h5 class="table-info">EVENTS ESTATISTICS</h5>
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-center">Evenvents with de highest percentage of
+                                        attendance</th>
+                                    <th scope="col" class="text-center">Events with de lowest percentage of
+                                        attendance</th>
+                                    <th scope="col" class="text-center">Events with larger capacity</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tb-event-stats">
 
-        <div class="container-table d-flex justify-content-center pt-5">
-            <div class="row">
-                <div class="col">
-                    <table class="table table-bordered">
-                        <h5 class="table-info">EVENTS ESTATISTICS</h5>
-                        <thead>
-                            <tr>
-                                <th scope="col">Events with the highest percentage of attendance</th>
-                                <th scope="col">Events with the lowest percentage of attendance</th>
-                                <th scope="col">Event with larger capacity</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table1">
-                            <!-- <tr>
-                     <td>...</td>
-                     <td>...</td>
-                     <td>...</td>
-                   </tr>-->
-                        </tbody>
-                    </table>
-                    <table class="table table-bordered">
-                        <h5 class="table-info">UPCOMING EVENTS ESTATISTICS BY CATEGORY</h5>
-                        <thead>
-                            <tr>
-                                <th scope="col">Categories</th>
-                                <th scope="col">Revenues</th>
-                                <th scope="col">Percentage of attendance</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableGroup2">
-                            <!-- <tr>
-                     <td>...</td>
-                     <td>...</td>
-                     <td>...</td>
-                   </tr>
-                   <tr>
-                     <td>...</td>
-                     <td>...</td>
-                     <td>...</td>
-                 </tr>
-                 <tr>
-                     <td>...</td>
-                     <td>...</td>
-                     <td>...</td>
-                 </tr>-->
-                        </tbody>
-                    </table>
-                    <table class="table table-bordered">
-                        <h5 class="table-info">PAST EVENTS ESTATISTICS BY CATEGORY</h5>
-                        <thead>
-                            <tr>
-                                <th scope="col">Categories</th>
-                                <th scope="col">Revenues</th>
-                                <th scope="col">Percentage of attendance</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableGroup3">
-                            <!-- <tr>
-                     <td>...</td>
-                     <td>...</td>
-                     <td>...</td>
-                   </tr>
-                   <tr>
-                     <td>...</td>
-                     <td>...</td>
-                     <td>...</td>
-                 </tr>
-                 <tr>
-                     <td>...</td>
-                     <td>...</td>
-                     <td>...</td>
-                 </tr>
-                 <tr>
-                     <td>...</td>
-                     <td>...</td>
-                     <td>...</td>
-                 </tr>
-                 <tr>
-                     <td>...</td>
-                     <td>...</td>
-                     <td>...</td>
-                 </tr>-->
-                        </tbody>
-                    </table>
+                                <tr v-if="statistics.length > 0" class="text-center">
+                                    <td>{{statistics[0].name}}:
+                                        {{(statistics[0].assistance*100/statistics[0].capacity).toFixed(2)}}%</td>
+                                    <td>{{statistics[1].name}}:
+                                        {{(statistics[1].assistance*100/statistics[1].capacity).toFixed(2)}}%</td>
+                                    <td>{{statistics[2].name}}: {{statistics[2].capacity}}</td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+
+                        <table class="table table-bordered">
+                            <h5 class="table-info">UPCOMING EVENTS ESTATISTICS BY CATEGORY</h5>
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-center col-4">Categories</th>
+                                    <th scope="col" class="text-center col-4">Revenues</th>
+                                    <th scope="col" class="text-center col-4">Percentage of attendance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tb-upcomming">
+                                <template v-for="categoria of tableUpcoming">
+                                    <tr class="text-center">
+                                        <td>{{categoria.category}}</td>
+                                        <td>$ {{categoria.revenue}}</td>
+                                        <td>{{categoria.porcentaje}}%</td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered">
+                            <h5 class="table-info">PAST EVENTS ESTATISTICS BY CATEGORY</h5>
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-center col-4">Categories</th>
+                                    <th scope="col" class="text-center col-4">Revenues</th>
+                                    <th scope="col" class="text-center col-4">Percentage of attendance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tb-pastEvents">
+                                <template v-for="categoria of tablePast">
+                                    <tr class="text-center">
+                                        <td>{{categoria.category}}</td>
+                                        <td>$ {{categoria.revenue}}</td>
+                                        <td>{{categoria.porcentaje}}%</td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-
-
     </main>
 
     <footer>

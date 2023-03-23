@@ -90,11 +90,25 @@
         <!-- VUE -->
         <div id="app">
 
+            <div id="detailsCard" class="detailsCard d-flex justify-content-center flex-wrap">
+
+                <div class="card mt-3 mb-3" style="width: 18rem;">
+                    <img class="card-img-top" style="height: 150px" v-bind:src="eventObjet.image"
+                        v-bind:alt="eventObjet.name">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h3 class="card-title">{{eventObjet.name}}</h3>
+                        <p class="card-text">Category: {{eventObjet.category}}</p>
+                        <p class="card-text">Date: {{eventObjet.date}}</p>
+                        <p class="card-text">{{eventObjet.description}}</p>
+                        <p class="card-text">Place: {{eventObjet.place}}</p>
+                        <p class="card-text">Capacity: {{eventObjet.capacity}}</p>
+                        <p class="card-text">Assistance: : {{eventObjet.assistance ? eventObjet.assistance :
+                            eventObjet.estimate}}</p>
+                    </div>
 
 
-
-
-
+                </div>
+            </div>
         </div>
 
 
