@@ -93,17 +93,19 @@
             <div id="detailsCard" class="detailsCard d-flex justify-content-center flex-wrap">
 
                 <div class="card mt-3 mb-3" style="width: 18rem;">
-                    <img class="card-img-top" style="height: 150px" v-bind:src="eventObjet.image"
-                        v-bind:alt="eventObjet.name">
+                    <img class="card-img-top" style="height: 150px" :src="eventosFiltro.image"
+                        :alt="eventosFiltro.name">
                     <div class="card-body d-flex flex-column justify-content-between">
-                        <h3 class="card-title">{{eventObjet.name}}</h3>
-                        <p class="card-text">Category: {{eventObjet.category}}</p>
-                        <p class="card-text">Date: {{eventObjet.date}}</p>
-                        <p class="card-text">{{eventObjet.description}}</p>
-                        <p class="card-text">Place: {{eventObjet.place}}</p>
-                        <p class="card-text">Capacity: {{eventObjet.capacity}}</p>
-                        <p class="card-text">Assistance: : {{eventObjet.assistance ? eventObjet.assistance :
-                            eventObjet.estimate}}</p>
+                        <h3 class="card-title">{{eventosFiltro.name}}</h3>
+                        <p class="card-text">Category: {{eventosFiltro.category}}</p>
+                        <p class="card-text">Date: {{eventosFiltro.date}}</p>
+                        <p class="card-text">{{eventosFiltro.description}}</p>
+                        <p class="card-text">Place: {{eventosFiltro.place}}</p>
+                        <p class="card-text">Capacity: {{eventosFiltro.capacity}}</p>
+                        <p class="card-text">Assistance: : {{eventosFiltro.assistance ? eventosFiltro.assistance :
+                            eventosFiltro.estimate}}</p>
+                        <input type="button" class="btn btn-dark nav-item p-2 me-1 ms-1 mb-1" value="Back to Home"
+                            onclick="history.back()" style="color: #e0046c; background-color: #e9ecef">
                     </div>
 
 

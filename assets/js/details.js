@@ -5,7 +5,7 @@ createApp({
          return{
           arrayEventos: [],
           nombreIngresado: '',
-          eventObjet: {},
+          eventosFiltro: {},
           arrayCategorias: [],
           dupCats: [],
           checked: [],    
@@ -20,8 +20,8 @@ createApp({
                 const queryString = location.search
                 const params = new URLSearchParams(queryString)
                 this.id = params.get("id")
-                this.eventObjet = this.arrayEventos.find(evento => evento._id == this.id);
-                console.log(this.eventObjet);
+                this.eventosFiltro = this.arrayEventos.find(evento => evento._id == this.id);
+                console.log(this.eventosFiltro);
 
                 
         
@@ -32,5 +32,4 @@ createApp({
     computed:{},
     
 }).mount("#app")
-
 

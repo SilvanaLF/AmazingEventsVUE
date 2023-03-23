@@ -1,13 +1,12 @@
 const { createApp } = Vue
 createApp({
-  //define el estado de la aplicación
   data() {
     return {
       datos: {},
       dataEvents: [],
       upcoming: [],
       past: [],
-      tableUpcoming: [],
+      tableUp: [],
       tablePast: [],
       statistics: []
     }
@@ -20,8 +19,8 @@ createApp({
         this.dataEvents = datos.events
         this.upcoming = datos.events.filter(event => new Date(event.date) > new Date(this.datos.currentDate))
         this.past = datos.events.filter(event => new Date(event.date) < new Date(this.datos.currentDate))
-        this.statistics = this.tabla1(this.dataEvents)
-        this.tablasPorCategoria(this.upcoming, this.tableUpcoming)
+        this.statistics = this.tablaA(this.dataEvents)
+        this.tablasPorCategoria(this.upcoming, this.tableUp)
         this.tablasPorCategoria(this.past, this.tablePast)
 
 
@@ -30,7 +29,8 @@ createApp({
 
   },
   methods: {
-    tabla1(eventos) {
+
+    tablaA(eventos) {
       let moreAssistance = eventos.filter(event => event.assistance).reduce((evento1, evento2) =>
         (evento1.assistance / evento1.capacity) > (evento2.assistance / evento2.capacity) ? evento1 : evento2
       )
