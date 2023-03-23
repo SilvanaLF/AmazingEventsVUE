@@ -18,7 +18,7 @@ createApp({
          .then(response => response.json())
          .then(data => {
               this.fechaActual = Date.parse(data.currentDate)
-              this.arrayEventos = data.events.filter(el => Date.parse(el.date) > this.fechaActual)
+              this.arrayEventos = data.events.filter(element => Date.parse(element.date) > this.fechaActual)
               this.eventosFiltro = this.arrayEventos
               this.crearChecks(this.arrayEventos)
 

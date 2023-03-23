@@ -22,10 +22,7 @@ createApp({
                 this.id = params.get("id")
                 this.eventosFiltro = this.arrayEventos.find(evento => evento._id == this.id);
                 console.log(this.eventosFiltro);
-
-                
-        
-         })
+          })
          .catch(error => console.log(error))
     },
     methods:{},
