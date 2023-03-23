@@ -3,7 +3,9 @@ const { createApp } = Vue
 createApp({
     data(){
          return{
-              
+          arrayEventos: [],
+          nombreIngresado: '',
+          eventosFiltro: [],    
          }
     },
     created(){
@@ -14,8 +16,7 @@ createApp({
                 this.arrayEventos = data.events
                 const id = new URLSearchParams(location.search).get("id");
                 console.log(id);
-                this.eventosFiltro = this.arrayEventos.find(evento => evento._id == id)
-                console.log(this.eventosFiltro)
+                
          })
          .catch(error => console.log(error))
     },
