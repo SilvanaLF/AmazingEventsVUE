@@ -1,43 +1,45 @@
+const { createApp } = Vue
 
-const traerDatos = async () => {
-    try{
-        const response = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
-        console.log(response)
-        let data = await response.json()
-        console.log([data])
-        let events = data.events
-        console.log(events)
+createApp({
+    data(){
+         return{
+              
+         }
+    },
+    created(){
 
-        const id = new URLSearchParams(location.search).get("id");
-        console.log(id);
-        const eventObjet = data.events.find(elemento => elemento._id == id);
-        console.log(eventObjet);
-        mostrarCard(eventObjet)
-
-
-
-    }catch(error) {
-        console.error('Error al traer datos')
-    }
-}
-    traerDatos()
-
+         fetch("https://mindhub-xj03.onrender.com/api/amazing")
+         .then(response => response.json())
+         .then(data => {
+                this.arrayEventos = data.events
+                const id = new URLSearchParams(location.search).get("id");
+                console.log(id);
+                this.eventosFiltro = this.arrayEventos.find(evento => evento._id == id)
+                console.log(this.eventosFiltro)
+         })
+         .catch(error => console.log(error))
+    },
+    methods:{},
+    computed:{},
     
+}).mount("#app")
+
+/*    
 function mostrarCard(eventObjet) {
 
     const container = document.getElementById('detailsCard')
     let nuevoDiv = document.createElement('div')
     nuevoDiv.className = "card mt-3 mb-3"
     nuevoDiv.style.width ="18rem"
-    nuevoDiv.innerHTML = `<img src="${eventObjet.image}" class="card-img-top" style="height: 150px" alt="Race">
+    nuevoDiv.innerHTML = `<img src="${eventosFiltro.image}" class="card-img-top" style="height: 150px" alt="Race">
         <div class="card-body d-flex flex-column justify-content-between">
-        <h3 class="card-title">${eventObjet.name}</h3>
-        <p class="card-text">Category: ${eventObjet.category}</p>
-        <p class="card-text">Date: ${eventObjet.date}</p>
-        <p class="card-text">${eventObjet.description}</p>
-        <p class="card-text">Place: ${eventObjet.place}</p>
-        <p class="card-text">Capacity: ${eventObjet.capacity}</p>
-        <p class="card-text">Assistance: : ${eventObjet.assistance ? eventObjet.assistance : eventObjet.estimate}</p>
+        <h3 class="card-title">${eventosFiltro.name}</h3>
+        <p class="card-text">Category: ${eventosFiltro.category}</p>
+        <p class="card-text">Date: ${eventosFiltro.date}</p>
+        <p class="card-text">${eventosFiltro.description}</p>
+        <p class="card-text">Place: ${eventosFiltro.place}</p>
+        <p class="card-text">Capacity: ${eventosFiltro.capacity}</p>
+        <p class="card-text">Assistance: : ${eventosFiltro.assistance ? eventosFiltro.assistance : eventosFiltro.estimate}</p>
         </div>`
         container.appendChild(nuevoDiv)
     let botonInicio = document.createElement('button')
@@ -50,5 +52,5 @@ function mostrarCard(eventObjet) {
         nuevoDiv.appendChild(botonInicio)
 
     }
-    //mostrarCard(eventObjet)
+   */
 
